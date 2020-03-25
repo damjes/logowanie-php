@@ -4,3 +4,4 @@
 - [x] sql injection
 - [x] haszowanie
 - [x] gravatar
+- [x] fontawesome i bootstrap
