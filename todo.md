@@ -1,0 +1,5 @@
+- [ ] wylogowanko
+- [ ] id usera
+- [ ] sql injection
+- [ ] haszowanie
+- [ ] gravatar
