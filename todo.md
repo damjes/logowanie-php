@@ -1,4 +1,5 @@
 - [x] wylogowanko
+- [x] automat (bez linków)
 - [ ] id usera
 - [ ] sql injection
 - [ ] haszowanie

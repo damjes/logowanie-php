@@ -18,8 +18,12 @@ if(isset($_POST['login'])) {
 
 	$dane = $wynik->fetch_assoc();
 
-	if($dane != null && $_POST['haslo'] == $dane['haslo'])
+	if($dane != null && $_POST['haslo'] == $dane['haslo']){
 		$_SESSION['zalogowano'] = true;
+		header("Location: index.php", true, 303);
+		$polaczenie->close();
+		die();
+	}
 	$polaczenie->close();
 }
 
@@ -32,12 +36,6 @@ if(isset($_POST['login'])) {
 	<title>Logowanie</title>
 </head>
 <body>
-<?php
-if(isset($_SESSION['zalogowano']))
-	echo 'Zalogowano poprawnie.';
-else
-	echo 'Wystąpił jakiś błąd.';
-?>
- Zapraszam na <a href="index.php">stronę główną</a>.
+Wystąpił jakiś błąd. Zapraszam na <a href="index.php">stronę główną</a>.
 </body>
 </html>
