@@ -1,6 +1,6 @@
 - [x] wylogowanko
 - [x] automat (bez linków)
-- [ ] id usera
+- [x] id usera
 - [ ] sql injection
 - [ ] haszowanie
 - [ ] gravatar

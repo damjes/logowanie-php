@@ -15,8 +15,28 @@ session_start();
 	<p>Witamy</p>
 	<p>Zaloguj się, aby zobaczyć tajną zawartość</p>
 <?php
-if(isset($_SESSION['zalogowano'])){
+if(isset($_SESSION['userid'])){
 ?>
+	<p>Witaj, <?php
+$polaczenie = new mysqli("localhost", "root", "", "logowanie");
+$polaczenie->set_charset("utf8");
+
+if ($polaczenie->connect_error) {
+	die("Connection failed: " . $polaczenie->connect_error);
+}
+
+$zapytanie = 'SELECT pelna_nazwa
+FROM uzyszkodnicy
+WHERE id="'.$_SESSION['userid'].'";';
+//echo $zapytanie;
+$wynik = $polaczenie->query($zapytanie);
+
+$dane = $wynik->fetch_assoc();
+
+echo $dane['pelna_nazwa'];
+
+$polaczenie->close();
+?></p>
 	<p>Wielka tajemnica</p>
 	<p><a href="wyloguj.php">Wyloguj teraz</a>
 <?php

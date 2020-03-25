@@ -2,15 +2,16 @@
 
 session_start();
 
-unset($_SESSION['zalogowano']);
+unset($_SESSION['userid']);
 if(isset($_POST['login'])) {
 	$polaczenie = new mysqli("localhost", "root", "", "logowanie");
+	$polaczenie->set_charset("utf8");
 
 	if ($polaczenie->connect_error) {
 		die("Connection failed: " . $polaczenie->connect_error);
 	}
 
-	$zapytanie = 'SELECT haslo
+	$zapytanie = 'SELECT id, haslo
 	FROM uzyszkodnicy
 	WHERE login="'.$_POST['login'].'";';
 	//echo $zapytanie;
@@ -19,7 +20,7 @@ if(isset($_POST['login'])) {
 	$dane = $wynik->fetch_assoc();
 
 	if($dane != null && $_POST['haslo'] == $dane['haslo']){
-		$_SESSION['zalogowano'] = true;
+		$_SESSION['userid'] = $dane['id'];
 		header("Location: index.php", true, 303);
 		$polaczenie->close();
 		die();

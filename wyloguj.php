@@ -2,7 +2,7 @@
 
 session_start();
 
-unset($_SESSION['zalogowano']);
+unset($_SESSION['userid']);
 
 header("Location: index.php", true, 303);
 
