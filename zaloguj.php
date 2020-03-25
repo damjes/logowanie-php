@@ -14,12 +14,17 @@ if(isset($_POST['login'])) {
 	$zapytanie = 'SELECT id, haslo
 	FROM uzyszkodnicy
 	WHERE login="'.$polaczenie->escape_string($_POST['login']).'";';
-	echo $zapytanie;
+	// echo $zapytanie;
+	// echo '<br>';
 	$wynik = $polaczenie->query($zapytanie);
 
-	$dane = $wynik->fetch_assoc();
+	@$dane = $wynik->fetch_assoc();
+	// echo $dane['haslo'];
+	// echo '<br>';
+	// echo $_POST['haslo'];
+	// echo '<br>';
 
-	if($dane != null && $_POST['haslo'] == $dane['haslo']){
+	if($dane != null && password_verify($_POST['haslo'], $dane['haslo'])){
 		$_SESSION['userid'] = $dane['id'];
 		header("Location: index.php", true, 303);
 		$polaczenie->close();

@@ -2,5 +2,5 @@
 - [x] automat (bez linków)
 - [x] id usera
 - [x] sql injection
-- [ ] haszowanie
+- [x] haszowanie
 - [ ] gravatar
