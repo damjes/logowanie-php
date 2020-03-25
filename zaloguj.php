@@ -13,8 +13,8 @@ if(isset($_POST['login'])) {
 
 	$zapytanie = 'SELECT id, haslo
 	FROM uzyszkodnicy
-	WHERE login="'.$_POST['login'].'";';
-	//echo $zapytanie;
+	WHERE login="'.$polaczenie->escape_string($_POST['login']).'";';
+	echo $zapytanie;
 	$wynik = $polaczenie->query($zapytanie);
 
 	$dane = $wynik->fetch_assoc();
