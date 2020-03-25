@@ -2,7 +2,7 @@
 
 session_start();
 
-$_SESSION['zalogowano'] = false;
+unset($_SESSION['zalogowano']);
 if(isset($_POST['login'])) {
 	$polaczenie = new mysqli("localhost", "root", "", "logowanie");
 
@@ -33,10 +33,11 @@ if(isset($_POST['login'])) {
 </head>
 <body>
 <?php
-if($_SESSION['zalogowano'])
-	echo 'Zalogowano poprawnie. Zapraszam na <a href="index.php">stronę główną</a>.';
+if(isset($_SESSION['zalogowano']))
+	echo 'Zalogowano poprawnie.';
 else
-	echo 'Wystąpił jakiś błąd';
+	echo 'Wystąpił jakiś błąd.';
 ?>
+ Zapraszam na <a href="index.php">stronę główną</a>.
 </body>
 </html>

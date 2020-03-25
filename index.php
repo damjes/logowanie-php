@@ -15,9 +15,10 @@ session_start();
 	<p>Witamy</p>
 	<p>Zaloguj się, aby zobaczyć tajną zawartość</p>
 <?php
-if($_SESSION['zalogowano']){
+if(isset($_SESSION['zalogowano'])){
 ?>
 	<p>Wielka tajemnica</p>
+	<p><a href="wyloguj.php">Wyloguj teraz</a>
 <?php
 }
 ?>

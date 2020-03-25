@@ -1,4 +1,4 @@
-- [ ] wylogowanko
+- [x] wylogowanko
 - [ ] id usera
 - [ ] sql injection
 - [ ] haszowanie
