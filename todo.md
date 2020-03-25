@@ -3,4 +3,4 @@
 - [x] id usera
 - [x] sql injection
 - [x] haszowanie
-- [ ] gravatar
+- [x] gravatar

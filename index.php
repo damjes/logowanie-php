@@ -25,7 +25,7 @@ if ($polaczenie->connect_error) {
 	die("Connection failed: " . $polaczenie->connect_error);
 }
 
-$zapytanie = 'SELECT pelna_nazwa
+$zapytanie = 'SELECT pelna_nazwa, email
 FROM uzyszkodnicy
 WHERE id="'.$_SESSION['userid'].'";';
 //echo $zapytanie;
@@ -34,18 +34,24 @@ $wynik = $polaczenie->query($zapytanie);
 $dane = $wynik->fetch_assoc();
 
 echo $dane['pelna_nazwa'];
+echo '</p>';
+$email = trim($dane['email']);
+$email = strtolower($email);
+$grav_id = md5($email);
+echo '<p><img src="https://www.gravatar.com/avatar/'.$grav_id.'" /></p>';
 
 $polaczenie->close();
 ?></p>
 	<p>Wielka tajemnica</p>
 	<p><a href="wyloguj.php">Wyloguj teraz</a>
 <?php
-}
+} else {
 ?>
 	<form action="zaloguj.php" method="post">
 	<p><input type="text" name="login" id="login"></p>
 	<p><input type="password" name="haslo" id="haslo"></p>
 	<p><input type="submit" value="Loguj"></p>
 	</form>
+<?php } ?>
 </body>
 </html>
