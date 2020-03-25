@@ -3,12 +3,15 @@
 $zalogowano = false;
 if(isset($_POST['login'])) {
 	$polaczenie = new mysqli("localhost", "root", "", "logowanie");
-	$wynik = $polaczenie->query("
-		SELECT haslo
-		FROM uzyszkodnicy
-		WHERE login=".$_POST['login'].";
-	");
-	@$dane = $wynik->fetch_assoc();
+	if ($polaczenie->connect_error) {
+		die("Connection failed: " . $polaczenie->connect_error);
+	}
+	$zapytanie = 'SELECT haslo
+	FROM uzyszkodnicy
+	WHERE login="'.$_POST['login'].'";';
+	//echo $zapytanie;
+	$wynik = $polaczenie->query($zapytanie);
+	$dane = $wynik->fetch_assoc();
 	if($dane != null && $_POST['haslo'] == $dane['haslo'])
 		$zalogowano = true;
 	$polaczenie->close();
