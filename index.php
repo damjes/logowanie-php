@@ -15,7 +15,9 @@ session_start();
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
 <body class="container">
-	<h1>Witamy</h1>
+	<div class="jumbotron">
+		<h1>Witamy</h1>
+	</div>
 	<p>Zaloguj się, aby zobaczyć tajną zawartość</p>
 <?php
 if(isset($_SESSION['userid'])){
